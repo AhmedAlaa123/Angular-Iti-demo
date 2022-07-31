@@ -1,0 +1,10 @@
+<div class="card ">
+  
+  <span class="badge badge-danger" *ngIf="Product.Discount!='No Discount'?true:false">{{Product.Discount}}</span>
+    <img [src]="Product.Image" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title text-success">{{Product.Name}}</h5>
+        <p class="card-text">Price : <span class="text-info">{{Product.Price|currency}}</span></p>
+        <a href="#" class="btn btn-primary">Add To Cart +</a>
+    </div>
+  </div>

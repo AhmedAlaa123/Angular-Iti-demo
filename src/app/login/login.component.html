@@ -1,0 +1,24 @@
+
+<div class="row justify-content-center"  >
+<form #formData="ngForm" novalidate  method="post" class="card p-4 col-md-6">
+  <h1 class="text-center mb-3 text-info mb-3">Login</h1>
+    {{formData.value | json}}
+        <div class="mb-3" >
+        <label for="exampleInputEmail1" class="form-label" >Email address</label>
+            <input type="email" class="form-control"  required name="email" pattern="^[a-zA-Z]{3,}@[a-z]{3,4}\.com$" [(ngModel)]="loginUser.email" #email="ngModel"  [class.is-invalid]="email.invalid&&email.touched">
+           <div *ngIf="email.errors&&email.touched" class="aler alert-warning">
+                <small class="text-danger" *ngIf="email.errors?.['required']">*Email Required</small>
+                <small class="text-danger"  *ngIf="email.errors?.['pattern']">*Email Invalid</small>
+           </div>
+        </div>
+        <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control"  name="password"  required  [(ngModel)]="loginUser.password" #passwrod="ngModel" [class.is-invalid]="passwrod.invalid&&passwrod.touched">
+                <small class="text-danger" *ngIf="passwrod.invalid&&passwrod.touched">*password Required</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+
+  </form>
+</div>
+  <hr class="my-3">
+<div class="text-center">  Don't have an Account ? <a routerLink="/register">Create new Account</a></div>

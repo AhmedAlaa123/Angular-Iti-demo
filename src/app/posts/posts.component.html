@@ -1,0 +1,15 @@
+
+<div class="row justify-content-between p-5">
+  
+    <div class="card  col-md-3 col-sm-3 m-2 pb-3" *ngFor="let post of posts">
+
+       <div class="card-body ">
+           <h5 class="card-title text-success">{{post.id}}</h5>
+           <h2 class="card-text">{{post.title}} </h2>
+           <p>{{post.body}}</p>
+        </div>
+        <a routerLink="/posts/{{post.id}}/comment" class="btn btn-info">Show Comments</a>
+     </div>
+ 
+ </div>
+ 

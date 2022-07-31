@@ -1,0 +1,9 @@
+<h2 class="text-center text-secondary fs-3">Products With Discount</h2>
+<div >
+    <div class="row  my-5 p-3 " > 
+        <div  class="col-md-3 col-sm-2 mb-3"   *ngFor="let item of productsList">
+            <app-product-card [product]="item"></app-product-card>
+        </div>
+    </div>
+    
+</div>

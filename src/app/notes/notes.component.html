@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <form class="col-md-6 card p-4" [formGroup]="notesForm">
+        {{notesForm.value|json}}
+        <div class="form-group">
+            <label>Name : </label>
+            <input type="text" class="form-control" formControlName="name" [class.is-invalid]="Name?.invalid&&Name?.touched">
+            <div *ngIf="Name?.errors&&Name?.touched">
+                <small class="text-danger" *ngIf="Name?.errors?.['required']">*Name Requird</small><br>
+                <small class="text-danger" *ngIf="Name?.errors?.['forbiddenName']">*Name {{Name?.value}} Not Allowed</small>
+            </div>
+        </div>
+        <div class="form-cntrol">
+            <label>Select Product:</label>
+            <select class="form-control" formControlName="product" [class.is-invalid]="Product?.invalid&&Product?.touched">
+                    <option *ngFor="let prd of prducts" value="{{prd}}">{{prd}}</option>
+            </select>
+        </div>
+        <div class="form-check mb-3" >
+            <input type="checkbox" (click)="handelChange()" class="form-check-input" formControlName="hasDiscount"/>
+            <label class="form-check-label">Does this product containd discount</label>
+        </div>
+        <div class="form-group" [hidden]="isHiddent">
+            <label>Enter Discount Value :</label>
+            <input type="number" class="form-control" formControlName="discount" [class.is-invalid]="Discount?.invalid&&Discount?.touched">
+        </div>
+          
+        <div formArrayName="comments" *ngFor="let email of Comments.controls ; let i=index">
+            <label>Comment # {{i+1}}</label>
+            <input type="text" class="form-control" [formControlName]="i"/>
+            <button (click)="removeComment(i)" class="float-right btn btn-danger mb-3">-</button>
+       </div>
+            
+          <div class="form-group">
+            <input type="submit" class="btn btn-success" value="ADD">
+            <button (click)="addComment()" class="btn btn-success ms-5 float-right">+</button>
+          </div>
+    </form>
+</div>

@@ -1,0 +1,6 @@
+<div class="p-3">
+    <h1 class="text-center text-info mb-5">Persone Information</h1>
+    <label for="perosnName" class="me-3 fw-bold ms-3 text-success">Enter Person Name     :   </label>    
+    <input id="perosnName" type="text" class="form-control"  [(ngModel)]='presonName' (change)="handelChangeName()"/>
+    <p class="text-center mt-4 text-danger" >{{presonName}}</p>
+</div>

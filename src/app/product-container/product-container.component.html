@@ -1,0 +1,21 @@
+<app-persone-details (personEvent)="personName=$event"></app-persone-details>
+<div class="p-4">
+    <label for="Categories" class="me-3 fw-bold ms-3 text-success">Select Category :   </label>
+    <select id="Categories"  class="form-control" #categorySelect (change)="handelChange(categorySelect.value)" >
+        <option selected value="0">All Products</option>
+        <option *ngFor="let category of CategoryList"  value="{{category.ID}}">{{category.Name}}</option>
+    </select>
+    <p class="text-canter text-info fs-4">{{selectedCategory}}</p>
+</div>
+<div *ngIf='!buyNow;then productBlock; else messageBlock '></div>
+<ng-template #productBlock>
+    <div class="text-center my-3"><a class="btn btn-danger m-3" routerLink="/products/withDiscount">With Discount</a> <a class="btn btn-danger m-3" routerLink="/products/withoutDiscount">Without Discount</a></div>
+    <router-outlet></router-outlet>
+    <button (click)="handelBuyNow()" class="btn btn-success">Buy Now</button>
+</ng-template>
+
+<ng-template #messageBlock>
+    <div class="p-4">
+        <p class="text-center mt-4 text-danger">{{'Thanks for purchasing from our Store   '+personName}}</p>
+    </div>
+</ng-template>
